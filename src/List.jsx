@@ -1,6 +1,6 @@
 const List = ({list, listName}) => {
     return (<>
-        <h1>{listName} Event</h1> 
+        <h1>{listName} Events</h1> 
         <ol>   
         {list.length ? list?.map((proposal, index)=>
         <li>{proposal.name}</li> 
