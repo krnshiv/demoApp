@@ -1,10 +1,10 @@
-const List = ({list, listName}) => {
+const List = ({list, listName, loader}) => {
     return (<>
         <h1>{listName} Events</h1> 
         <ol>   
         {list.length ? list?.map((proposal, index)=>
         <li>{proposal.name}</li> 
-        ) : <ul><li>Empty</li></ul>
+        ) : <ul><li>{loader ? 'Loading...' : 'Empty'}</li></ul>
         } 
         </ol>   
         </>

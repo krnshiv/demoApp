@@ -1,13 +1,13 @@
 
 import React, {useState, useEffect} from 'react'
-import ProposalList from './ProposalList';
+import ProposalLists from './ProposalLists';
 
 
 const App = () => {
 
   return (
     <div className="App">
-        <ProposalList/>
+        <ProposalLists/>
     </div>
   );
 }

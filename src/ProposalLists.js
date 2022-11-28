@@ -2,16 +2,18 @@ import React, {useState, useEffect} from 'react'
 import moment from 'moment';
 import List from './List'
 
-const ProposalList = () => {
+const ProposalLists = () => {
     const [proposalsList, setProposalList] = useState([])
     const [upcomingList, setUpcomingList] = useState([])
     const [activeList, setActiveList] = useState([])
     const [cancelledList, setCancelledList] = useState([])
+    const [loader, setLoader] = useState(false)
   
     useEffect( ()=>{
     
     (async()=>{
           if(proposalsList.length < 1) 
+          setLoader(true)
           await fetch('https://api2.thedapplist.com/api/v2/proposals?offset=0&limit=20')
           .then((response) => response.json())
           .then((res)=>{
@@ -31,16 +33,18 @@ const ProposalList = () => {
                  setUpcomingList(upcoming)
                  setActiveList(active)
                  setCancelledList(older)
+
+                 setLoader(false)
           })}
           )()
         
       },[])
     
 return  <>
-<List list={upcomingList} listName={'Upcoming'}/>
-<List list={activeList} listName={'Active'}/>
-<List list={cancelledList} listName={'Older'}/>
+<List list={upcomingList} listName={'Upcoming'} loader={loader}/>
+<List list={activeList} listName={'Active'}loader={loader}/>
+<List list={cancelledList} listName={'Older'}loader={loader}/>
 </>   
 }
 
-export default ProposalList;
+export default ProposalLists;
