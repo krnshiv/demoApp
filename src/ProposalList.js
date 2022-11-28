@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import moment from 'moment';
+import ListPanel from './ListPanel'
 const ProposalList = () => {
     const [proposalsList, setProposalList] = useState([])
     const [upcomingList, setUpcomingList] = useState([])
@@ -29,33 +30,12 @@ const ProposalList = () => {
                  setUpcomingList(upcoming)
                  setActiveList(active)
                  setCancelledList(older)
-                 return lisofAllProposals
           })}
           )()
         
       },[])
     
-return <>
-    <h1>Upcoming Event</h1> <ol>   
-    {upcomingList.length ? upcomingList?.map((proposal, index)=>
-    <li>{proposal.name}</li> 
-) : <ul><li>Empty</li></ul>
-} </ol>   
-    <h1>Active Events</h1>
-    <ol>        
-    {activeList.length ? activeList?.map((proposal, index)=>
-    <li>{proposal.name}</li> 
-)
-: <ul><li>Empty</li></ul>}
-    </ol>
-    <h1>Older Events</h1>
-    <ol>
-    {cancelledList.length ?cancelledList?.map((proposal, index)=>
-   <li>{proposal.name}</li> 
-   ): <ul><li>Empty</li></ul>}
-   </ol>
-   
-</>
+return <ListPanel upcomingList={upcomingList} activeList={activeList} cancelledList={cancelledList}/>
 }
 
 export default ProposalList;
