@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import moment from 'moment';
-import ListPanel from './ListPanel'
+import List from './List'
+
 const ProposalList = () => {
     const [proposalsList, setProposalList] = useState([])
     const [upcomingList, setUpcomingList] = useState([])
@@ -35,7 +36,11 @@ const ProposalList = () => {
         
       },[])
     
-return <ListPanel upcomingList={upcomingList} activeList={activeList} cancelledList={cancelledList}/>
+return  <>
+<List list={upcomingList} listName={'Upcoming'}/>
+<List list={activeList} listName={'Active'}/>
+<List list={cancelledList} listName={'Older'}/>
+</>   
 }
 
 export default ProposalList;
