@@ -3,13 +3,12 @@ import moment from 'moment';
 import List from './List'
 
 const ProposalLists = () => {
-    const [proposalsList, setProposalList] = useState([])
     const [upcomingList, setUpcomingList] = useState([])
     const [activeList, setActiveList] = useState([])
     const [cancelledList, setCancelledList] = useState([])
     const [loader, setLoader] = useState(false)
   
-    useEffect( ()=>{
+  useEffect( ()=>{
     
     (async()=>{
           if(proposalsList.length < 1) 
@@ -38,12 +37,12 @@ const ProposalLists = () => {
           })}
           )()
         
-      },[])
+  },[])
     
 return  <>
 <List list={upcomingList} listName={'Upcoming'} loader={loader}/>
-<List list={activeList} listName={'Active'}loader={loader}/>
-<List list={cancelledList} listName={'Older'}loader={loader}/>
+<List list={activeList} listName={'Active'} loader={loader}/>
+<List list={cancelledList} listName={'Older'} loader={loader}/>
 </>   
 }
 
