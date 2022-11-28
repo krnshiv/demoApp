@@ -3,6 +3,7 @@ import moment from 'moment';
 import List from './List'
 
 const ProposalLists = () => {
+    const [proposalsList, setProposalList] = useState([])
     const [upcomingList, setUpcomingList] = useState([])
     const [activeList, setActiveList] = useState([])
     const [cancelledList, setCancelledList] = useState([])
@@ -29,10 +30,10 @@ const ProposalLists = () => {
                  if (weekNumber == currentWeekNumber) active = [...active, l]
                  if (weekNumber > currentWeekNumber) upcoming = [...upcoming, l]
                 })
+                 setProposalList(lisofAllProposals)
                  setUpcomingList(upcoming)
                  setActiveList(active)
                  setCancelledList(older)
-
                  setLoader(false)
           })}
           )()
